@@ -1,0 +1,14 @@
+<% if (!posts.length) { %>
+    <p class="empty">No posts yet — check back soon.</p>
+<% } %>
+<% posts.each(function (post) { %>
+    <article class="post-card">
+        <p class="meta">
+            <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'D MMM YYYY') %></time>
+            <% if (post.categories && post.categories.length) { %> · <%= post.categories.first().name %><% } %>
+        </p>
+        <h2><a href="<%- url_for(post.path) %>"><%= post.title %></a></h2>
+        <p><%= post.description || truncate(strip_html(post.excerpt || post.content), { length: 200 }) %></p>
+        <a class="button" href="<%- url_for(post.path) %>">Read post</a>
+    </article>
+<% }) %>

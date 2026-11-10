@@ -1,0 +1,39 @@
+<%
+    let eyebrow = theme.eyebrow;
+    let heading = config.title;
+    let lead = config.subtitle;
+
+    if (is_post()) {
+        eyebrow = page.categories && page.categories.length ? page.categories.first().name : 'Post';
+        heading = page.title;
+        lead = date(page.date, 'D MMMM YYYY');
+    } else if (is_tag()) {
+        eyebrow = 'Tag';
+        heading = page.tag;
+        lead = '';
+    } else if (is_category()) {
+        eyebrow = 'Category';
+        heading = page.category;
+        lead = '';
+    } else if (is_archive()) {
+        eyebrow = 'Archive';
+        heading = 'All posts';
+        lead = '';
+    } else if (is_page()) {
+        heading = page.title;
+        lead = page.description || '';
+    }
+%>
+<header<%- is_post() ? ' class="is-post"' : '' %>>
+    <nav aria-label="Main">
+        <a class="brand" href="<%- url_for('/') %>"><%= config.title %></a>
+        <ul>
+            <% for (const [label, path] of Object.entries(theme.menu || {})) { %>
+                <li><a href="<%- url_for(path) %>"<%- is_current(path, path === '/') ? ' aria-current="page"' : '' %>><%= label %></a></li>
+            <% } %>
+        </ul>
+    </nav>
+    <p class="eyebrow"><%= eyebrow %></p>
+    <h1><%= heading %></h1>
+    <% if (lead) { %><p class="lead"><%= lead %></p><% } %>
+</header>

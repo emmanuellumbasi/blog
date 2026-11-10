@@ -1,0 +1,5 @@
+---
+title: Categories
+date: 2026-11-10
+type: categories
+---

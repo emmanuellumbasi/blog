@@ -1,0 +1,16 @@
+<article>
+    <% if (page.tags && page.tags.length) { %>
+        <ul class="tags">
+            <% page.tags.each(function (tag) { %>
+                <li><a href="<%- url_for(tag.path) %>">#<%= tag.name %></a></li>
+            <% }) %>
+        </ul>
+    <% } %>
+    <div class="content"><%- page.content %></div>
+    <% if (page.prev || page.next) { %>
+        <nav class="post-nav" aria-label="More posts">
+            <% if (page.prev) { %><a href="<%- url_for(page.prev.path) %>">← <%= page.prev.title %></a><% } else { %><span></span><% } %>
+            <% if (page.next) { %><a href="<%- url_for(page.next.path) %>"><%= page.next.title %> →</a><% } %>
+        </nav>
+    <% } %>
+</article>

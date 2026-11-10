@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="<%= config.language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= page.title ? page.title + ' · ' + config.title : config.title %></title>
+    <meta name="description" content="<%= page.description || config.description %>">
+    <%- css(['css/reset', 'css/screen']) %>
+</head>
+<body>
+<%- partial('partial/header') %>
+<main>
+    <div class="card">
+        <%- body %>
+    </div>
+</main>
+<%- partial('partial/footer') %>
+</body>
+</html>

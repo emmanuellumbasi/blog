@@ -1,0 +1,7 @@
+<% if (page.type === 'tags') { %>
+    <%- list_tags({ show_count: true, class: 'chip' }) || '<p class="empty">No tags yet.</p>' %>
+<% } else if (page.type === 'categories') { %>
+    <%- list_categories({ show_count: true, class: 'chip' }) || '<p class="empty">No categories yet.</p>' %>
+<% } else { %>
+    <div class="content"><%- page.content %></div>
+<% } %>

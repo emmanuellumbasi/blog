@@ -1,0 +1,11 @@
+# Small label shown above the big heading on the home page and pages
+eyebrow: CS student · Howest
+
+# Navigation: Label: /path/
+menu:
+  Home: /
+  Archive: /archives/
+  Tags: /tags/
+  Categories: /categories/
+  Projects: /projects/
+  About: /about/
